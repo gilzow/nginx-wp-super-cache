@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23e699575d6420232f4c04d5dc1802e9",
+    "content-hash": "50e0d3c5f0d7a432ab7a2a0ea987ac61",
     "packages": [
         {
             "name": "composer/installers",
@@ -1411,22 +1411,22 @@
             "homepage": "https://wordpress.org/plugins/akismet/"
         },
         {
-            "name": "wpackagist-plugin/wp-super-cache",
-            "version": "1.7.7",
+            "name": "wpackagist-plugin/w3-total-cache",
+            "version": "2.2.1",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
-                "reference": "tags/1.7.7"
+                "url": "https://plugins.svn.wordpress.org/w3-total-cache/",
+                "reference": "tags/2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.7.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.2.2.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-super-cache/"
+            "homepage": "https://wordpress.org/plugins/w3-total-cache/"
         },
         {
             "name": "wpackagist-theme/twentynineteen",
