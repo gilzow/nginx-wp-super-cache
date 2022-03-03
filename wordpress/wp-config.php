@@ -122,7 +122,7 @@ define( 'WP_AUTO_UPDATE_CORE', false );
 $table_prefix  = 'wp_';
 #CACHING CONSTANTS
 define( 'WP_CACHE', true );
-define( 'WPCACHECONFIGPATH', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' . DIRECTORY_SEPARATOR );
+define( 'WPCACHECONFIGPATH', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
 define( 'WPCACHEHOME', WP_CONTENT_DIR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
 
 
