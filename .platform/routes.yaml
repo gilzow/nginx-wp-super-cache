@@ -1,0 +1,7 @@
+https://{all}/:
+  type: upstream
+  upstream: nginxproxy:http
+  cache:
+    enabled: false
+  ssi:
+    enabled: false

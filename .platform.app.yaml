@@ -1,0 +1,37 @@
+name: "nginxproxy"
+type: golang:1.14
+
+relationships:
+    app: "app:http"
+
+hooks:
+    deploy: |
+      # Configure the listener port appropriately.
+      mkdir -p /tmp/appnginx/
+      envsubst '${PORT}' < /app/nginx.conf > /app/conf/nginx.conf
+
+mounts:
+  "/conf": "shared:files/conf"
+  "/log": "shared:files/log"
+  "www/wp-content/cache":
+      source: service
+      service: sharedcache
+      source_path: "cache"
+
+web:
+    upstream:
+        socket_family: tcp
+        protocol: http
+
+    commands:
+        start: /usr/sbin/nginx -p /app/conf -c /app/conf/nginx.conf -g 'error_log /app/log/error.log;daemon off;' > /app/log/error.log 2>&1 ; sleep 1
+
+    locations:
+        /:
+            # Route all requests unconditionally.
+            # If you want some files served directly by the web server without hitting Go, see
+            # https://docs.platform.sh/configuration/app/web.html
+            allow: false
+            passthru: true
+
+disk: 512

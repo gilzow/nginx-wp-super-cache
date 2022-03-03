@@ -1,0 +1,77 @@
+# 172
+name: "app"
+
+type: php:7.4
+build:
+  flavor: composer
+
+dependencies:
+  php:
+    composer/composer: '^2'
+    wp-cli/wp-cli-bundle: "^2.4.0"
+
+web:
+  locations:
+    "/":
+      # The public directory of the app, relative to its root.
+      root: "wordpress"
+      # The front-controller script to send non-static requests to.
+      passthru: "/index.php"
+      # Wordpress has multiple roots (wp-admin) so the following is required
+      index:
+        - "index.php"
+      # The number of seconds whitelisted (static) content should be cached.
+      expires: 600
+      scripts: true
+      allow: true
+      rules:
+        ^/composer\.json:
+          allow: false
+        ^/license\.txt$:
+          allow: false
+        ^/readme\.html$:
+          allow: false
+    "/wp-content/cache":
+      root: "wordpress/wp-content/cache"
+      scripts: false
+      allow: false
+      rules:
+        '\.html$':
+          allow: true
+    "/wp-content/uploads":
+      root: "wordpress/wp-content/uploads"
+      scripts: false
+      allow: true
+
+mounts:
+  "wordpress/wp-content/cache":
+    source: service
+    service: sharedcache
+    source_path: "cache"
+  "wordpress/wp-content/cache-config":
+    source: local
+    source_path: "cache-config"
+  "wordpress/wp-content/uploads":
+    source: local
+    source_path: "uploads"
+
+hooks:
+  build: |
+    set -e
+    # Copy manually-provided plugins into the plugins directory.
+    # This allows manually-provided and composer-provided plugins to coexist.
+    rsync -a plugins/* wordpress/wp-content/plugins/
+    ln -sf /app/wordpress/wp-content/cache-config/advanced-cache.php wordpress/wp-content/advanced-cache.php
+
+  deploy: |
+    if [ ! -f wordpress/wp-content/cache-config/advanced-cache.php ]; then
+        touch wordpress/wp-content/cache-config/advanced-cache.php
+    fi
+
+    wp core is-installed && wp core update-db && wp cache flush && wp cron event run --due-now
+
+
+relationships:
+    database: "mysqldb:mysql"
+
+disk: 1000

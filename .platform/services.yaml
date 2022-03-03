@@ -1,0 +1,7 @@
+mysqldb:
+  type: mysql:10.2
+  disk: 1048
+
+sharedcache:
+  type: network-storage:1.0
+  disk: 256
