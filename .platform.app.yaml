@@ -8,7 +8,7 @@ hooks:
     deploy: |
       # Configure the listener port appropriately.
       mkdir -p /tmp/appnginx/
-      envsubst '${PORT}' < /app/nginx.conf > /app/conf/nginx.conf
+      envsubst '${PORT} ${CACHEPLUGIN}' < /app/nginx.conf > /app/conf/nginx.conf
 
 mounts:
   "/conf": "shared:files/conf"
@@ -35,3 +35,7 @@ web:
             passthru: true
 
 disk: 512
+
+variables:
+  env:
+    CACHEPLUGIN: 'supercache'
