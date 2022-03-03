@@ -8,7 +8,8 @@ hooks:
     deploy: |
       # Configure the listener port appropriately.
       mkdir -p /tmp/appnginx/
-      envsubst '${PORT} ${CACHEPLUGIN}' < /app/nginx.conf > /app/conf/nginx.conf
+      export PLUGIN=$(/bin/bash plugins.sh "${CACHEPLUGIN}")
+      envsubst '${PORT} ${PLUGIN}' < /app/nginx.conf > /app/conf/nginx.conf
 
 mounts:
   "/conf": "shared:files/conf"
@@ -38,4 +39,4 @@ disk: 512
 
 variables:
   env:
-    CACHEPLUGIN: 'supercache'
+    CACHEPLUGIN: 'w3-total-cache'
