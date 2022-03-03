@@ -60,7 +60,7 @@ hooks:
     set -e
     # Copy manually-provided plugins into the plugins directory.
     # This allows manually-provided and composer-provided plugins to coexist.
-    rsync -a plugins/* wordpress/wp-content/plugins/
+    #rsync -a plugins/* wordpress/wp-content/plugins/
     ln -sf /app/wordpress/wp-content/cache-config/advanced-cache.php wordpress/wp-content/advanced-cache.php
 
   deploy: |
