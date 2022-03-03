@@ -123,7 +123,7 @@ $table_prefix  = 'wp_';
 #CACHING CONSTANTS
 define( 'WP_CACHE', true );
 define( 'WPCACHECONFIGPATH', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
-define( 'WPCACHEHOME', WP_CONTENT_DIR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
+define( 'WPCACHEHOME', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
 
 
 /** Absolute path to the WordPress directory. */
