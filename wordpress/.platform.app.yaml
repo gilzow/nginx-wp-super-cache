@@ -64,9 +64,10 @@ hooks:
     ln -sf /app/wordpress/wp-content/cache-config/advanced-cache.php wordpress/wp-content/advanced-cache.php
 
   deploy: |
-    if [ ! -f wordpress/wp-content/cache-config/advanced-cache.php ]; then
-        touch wordpress/wp-content/cache-config/advanced-cache.php
-    fi
+    rync -a wordpress/wp-content/plugins/wp-super-cache/adavanced-cache.php wordpress/wp-content/cache-config/advanced-cache.php
+    #if [ ! -f wordpress/wp-content/cache-config/advanced-cache.php ]; then
+        #touch wordpress/wp-content/cache-config/advanced-cache.php
+    #fi
 
     wp core is-installed && wp core update-db && wp cache flush && wp cron event run --due-now
 
