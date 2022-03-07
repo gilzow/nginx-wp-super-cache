@@ -9,6 +9,7 @@ hooks:
       # Configure the listener port appropriately.
       mkdir -p /tmp/appnginx/
       #export PLUGIN=$(/bin/bash plugins.sh "${CACHEPLUGIN}")
+      rsync -a cache-conf/ conf
       envsubst '${PORT} ${CACHEPLUGIN}' < /app/nginx.conf > /app/conf/nginx.conf
 
 mounts:
