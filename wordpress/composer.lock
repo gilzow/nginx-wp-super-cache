@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13be6cec969369bc7ef814d9217d0b15",
+    "content-hash": "7b6bb7812d96b5305028a4fe01231221",
     "packages": [
         {
             "name": "composer/installers",
@@ -1411,22 +1411,22 @@
             "homepage": "https://wordpress.org/plugins/akismet/"
         },
         {
-            "name": "wpackagist-plugin/wp-fastest-cache",
-            "version": "0.9.9",
+            "name": "wpackagist-plugin/hyper-cache",
+            "version": "3.4.0",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-fastest-cache/",
-                "reference": "tags/0.9.9"
+                "url": "https://plugins.svn.wordpress.org/hyper-cache/",
+                "reference": "tags/3.4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-fastest-cache.0.9.9.zip"
+                "url": "https://downloads.wordpress.org/plugin/hyper-cache.3.4.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-fastest-cache/"
+            "homepage": "https://wordpress.org/plugins/hyper-cache/"
         },
         {
             "name": "wpackagist-theme/twentynineteen",
