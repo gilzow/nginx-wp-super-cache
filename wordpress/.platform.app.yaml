@@ -83,7 +83,7 @@ hooks:
       cp -f wordpress/wp-content/plugins/hyper-cache/advanced-cache.php wordpress/wp-content/cache/advanced-cache.php
     fi
 
-  wp core is-installed && wp core update-db && wp cache flush && wp cron event run --due-now
+    wp core is-installed && wp core update-db && wp cache flush && wp cron event run --due-now
 
 
 relationships:
