@@ -61,10 +61,10 @@ hooks:
     # Copy manually-provided plugins into the plugins directory.
     # This allows manually-provided and composer-provided plugins to coexist.
     #rsync -a plugins/* wordpress/wp-content/plugins/
-    ln -sf /app/wordpress/wp-content/cache-config/advanced-cache.php wordpress/wp-content/advanced-cache.php
+    #ln -sf /app/wordpress/wp-content/cache-config/advanced-cache.php wordpress/wp-content/advanced-cache.php
 
   deploy: |
-    rsync -a wordpress/wp-content/plugins/w3-total-cache/wp-content/advanced-cache.php wordpress/wp-content/cache-config/advanced-cache.php
+    #rsync -a wordpress/wp-content/plugins/w3-total-cache/wp-content/advanced-cache.php wordpress/wp-content/cache-config/advanced-cache.php
     #if [ ! -f wordpress/wp-content/cache-config/advanced-cache.php ]; then
         #touch wordpress/wp-content/cache-config/advanced-cache.php
     #fi
