@@ -41,3 +41,8 @@ disk: 512
 variables:
   env:
     CACHEPLUGIN: 'wp-fastest-cache'
+source:
+  operations:
+    test:
+      command: |
+        echo "hello from source op"
