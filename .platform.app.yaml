@@ -8,9 +8,17 @@ hooks:
     deploy: |
       # Configure the listener port appropriately.
       mkdir -p /tmp/appnginx/
+      if [ "wp-fastest-cache" != "${CACHEPLUGIN}" ]; then
+        export CACHEDIR=$(/bin/bash plugins.sh "${CACHEPLUGIN}")
+        envsubst '${CACHEDIR}' < /app/cache-conf/default.conf > /app/conf/default.conf
+        export CONFFILE="default"
+      else
+        export CONFFILE=${CACHEPLUGIN}
+        rsync -a "cache-conf/${CACHEPLUGIN}.conf conf
+      fi
       #export PLUGIN=$(/bin/bash plugins.sh "${CACHEPLUGIN}")
       rsync -a cache-conf/ conf
-      envsubst '${PORT} ${CACHEPLUGIN}' < /app/nginx.conf > /app/conf/nginx.conf
+      envsubst '${PORT} ${CONFFILE}' < /app/nginx.conf > /app/conf/nginx.conf
 
 mounts:
   "/conf": "shared:files/conf"
