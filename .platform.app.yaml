@@ -14,10 +14,10 @@ hooks:
         export CONFFILE="default"
       else
         export CONFFILE=${CACHEPLUGIN}
-        rsync -a "cache-conf/${CACHEPLUGIN}.conf conf
+        rsync -a "cache-conf/${CACHEPLUGIN}.conf" conf
       fi
       #export PLUGIN=$(/bin/bash plugins.sh "${CACHEPLUGIN}")
-      rsync -a cache-conf/ conf
+      #rsync -a cache-conf/ conf
       envsubst '${PORT} ${CONFFILE}' < /app/nginx.conf > /app/conf/nginx.conf
 
 mounts:
