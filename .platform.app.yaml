@@ -40,7 +40,7 @@ disk: 512
 
 variables:
   env:
-    CACHEPLUGIN: 'wp-fastest-cache'
+    CACHEPLUGIN: 'comet-cache'
 source:
   operations:
     test:
