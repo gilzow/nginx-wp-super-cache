@@ -46,9 +46,6 @@ web:
 
 disk: 512
 
-variables:
-  env:
-    CACHEPLUGIN: 'hyper-cache'
 source:
   operations:
     test:
