@@ -122,8 +122,10 @@ define( 'WP_AUTO_UPDATE_CORE', false );
 $table_prefix  = 'wp_';
 #CACHING CONSTANTS
 define( 'WP_CACHE', true );
-#define( 'WPCACHECONFIGPATH', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
-#define( 'WPCACHEHOME', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
+# wp-super-cache specici
+define( 'WPCACHECONFIGPATH', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
+define( 'WPCACHEHOME', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
+# w3-total-cache specific
 #define( 'W3TC_CONFIG_DIR', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
 
 /** Absolute path to the WordPress directory. */
