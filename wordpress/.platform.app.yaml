@@ -64,24 +64,19 @@ hooks:
     set -e
     # Copy manually-provided plugins into the plugins directory.
     # This allows manually-provided and composer-provided plugins to coexist.
-    #rsync -a plugins/* wordpress/wp-content/plugins/
-    ln -sf /app/wordpress/wp-content/cache-config/advanced-cache.php wordpress/wp-content/advanced-cache.php
-    #if [ -f wordpress/wp-content/plugins/hyper-cache/advanced-cache.php ]; then
-      # we can't copy the file until the deploy stage because the writable mount is available but we can force
+    rsync -a plugins/* wordpress/wp-content/plugins/
+    # if the cache plugin var is set, then it means we're most likely going to need the advanced-cache.php file
+    if [ -n "${CACHEPLUGIN}" ]; then
+      # we can't copy the file until the deploy stage because the writable mount isn't available but we can force
       # create a symlink to what *will* be the location later
-      #ln -sf /app/wordpress/wp-content/cache/advanced-cache.php wordpress/wp-content/advanced-cache.php
-    #fi
-
-
-  deploy: |
-    #rsync -a wordpress/wp-content/plugins/w3-total-cache/wp-content/advanced-cache.php wordpress/wp-content/cache-config/advanced-cache.php
-    if [ ! -f wordpress/wp-content/cache-config/advanced-cache.php ]; then
-        touch wordpress/wp-content/cache-config/advanced-cache.php
+      ln -sf /app/wordpress/wp-content/cache-config/advanced-cache.php wordpress/wp-content/advanced-cache.php
     fi
 
-    #if [ -f wordpress/wp-content/plugins/hyper-cache/advanced-cache.php ]; then
-      #cp -f wordpress/wp-content/plugins/hyper-cache/advanced-cache.php wordpress/wp-content/cache/advanced-cache.php
-    #fi
+  deploy: |
+    #If our advanced-cache.php file doesn't exist yet, create it so our symlink doesnt cause an error
+    if [ ! -f wordpress/wp-content/cache-config/advanced-cache.php ] && [ -n "${CACHEPLUGIN}" ]; then
+        touch wordpress/wp-content/cache-config/advanced-cache.php
+    fi
 
     wp core is-installed && wp core update-db && wp cache flush && wp cron event run --due-now
 
