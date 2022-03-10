@@ -59,7 +59,7 @@ case ${CACHEPLUGIN} in
   	totalCacheAC="wordpress/wp-content/plugins/w3-total-cache/wp-content/advanced-cache.php"
   	if [[ -f "${advancedCacheFile}" ]]; then
   		testownership "W3 Total Cache" "${totalCacheAC}"
-			if ( 1 == $? ); then
+			if (( 1 == $? )); then
 				exit 1;
 			fi
   	else
