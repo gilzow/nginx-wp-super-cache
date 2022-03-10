@@ -127,6 +127,8 @@ define( 'WP_CACHE', true );
 #define( 'WPCACHEHOME', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
 # w3-total-cache specific
 #define( 'W3TC_CONFIG_DIR', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
+# wp-rocket specific
+define('WP_ROCKET_CONFIG_PATH',WP_CONTENT_DIR . DIRECTORY_SEPARATOR.'cache-config'.DIRECTORY_SEPARATOR);
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
