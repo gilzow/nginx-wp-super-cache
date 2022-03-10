@@ -76,6 +76,7 @@ hooks:
     #If our advanced-cache.php file doesn't exist yet, create it so our symlink doesnt cause an error
     if [ ! -f wordpress/wp-content/cache-config/advanced-cache.php ] && [ -n "${CACHEPLUGIN}" ]; then
       if [ "wp-super-cache" == "${CACHEPLUGIN}" ] && [ -f wordpress/wp-content/plugins/wp-super-cache/advanced-cache.php ]; then
+        # maybe instead we move this to the piece in wp-config.php that sets up constants?
         rsync -a wordpress/wp-content/plugins/wp-super-cache/advanced-cache.php wordpress/wp-content/cache-config/advanced-cache.php
       else
         touch wordpress/wp-content/cache-config/advanced-cache.php
