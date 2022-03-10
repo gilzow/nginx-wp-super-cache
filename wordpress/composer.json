@@ -31,8 +31,7 @@
     "wpackagist-plugin/akismet": "^4.2",
     "wpackagist-theme/twentytwentyone": "^1.4",
     "wpackagist-theme/twentynineteen": "^2.1",
-    "wpackagist-theme/twentytwenty": "^1.8",
-	"wpackagist-plugin/hyper-cache":"3.4.0"
+    "wpackagist-theme/twentytwenty": "^1.8"
   },
   "config": {
   },
