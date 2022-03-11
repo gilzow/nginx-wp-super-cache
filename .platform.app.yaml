@@ -19,6 +19,9 @@ hooks:
       #export PLUGIN=$(/bin/bash plugins.sh "${CACHEPLUGIN}")
       #rsync -a cache-conf/ conf
       envsubst '${PORT} ${CONFFILE}' < /app/nginx.conf > /app/conf/nginx.conf
+      # now let's add a conf check to surface any errors that might be present
+      /usr/sbin/nginx -p /app/conf -c /app/conf/nginx.conf -t
+
 
 mounts:
   "/conf": "shared:files/conf"
