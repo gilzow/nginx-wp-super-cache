@@ -120,15 +120,35 @@ define( 'WP_AUTO_UPDATE_CORE', false );
 // Since you can have multiple installations in one database, you need a unique
 // prefix.
 $table_prefix  = 'wp_';
+
+/**
+ * Caching support
+ */
+if (false !== $cachingPlugin = getenv('CACHEPLUGIN')) {
+	define( 'WP_CACHE', true );
+	switch ($cachingPlugin) {
+		case 'wp-super-cache':
+			define( 'WPCACHECONFIGPATH', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
+			define( 'WPCACHEHOME', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
+			break;
+		case 'w3-total-cache':
+			define( 'W3TC_CONFIG_DIR', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
+			break;
+		case 'wp-rocket':
+			define('WP_ROCKET_CONFIG_PATH',WP_CONTENT_DIR . DIRECTORY_SEPARATOR.'cache-config'.DIRECTORY_SEPARATOR);
+			break;
+	}
+}
+
 #CACHING CONSTANTS
-define( 'WP_CACHE', true );
+#define( 'WP_CACHE', true );
 # wp-super-cache specici
 #define( 'WPCACHECONFIGPATH', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
 #define( 'WPCACHEHOME', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-super-cache' . DIRECTORY_SEPARATOR );
 # w3-total-cache specific
 #define( 'W3TC_CONFIG_DIR', WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'cache-config' );
 # wp-rocket specific
-define('WP_ROCKET_CONFIG_PATH',WP_CONTENT_DIR . DIRECTORY_SEPARATOR.'cache-config'.DIRECTORY_SEPARATOR);
+#define('WP_ROCKET_CONFIG_PATH',WP_CONTENT_DIR . DIRECTORY_SEPARATOR.'cache-config'.DIRECTORY_SEPARATOR);
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
